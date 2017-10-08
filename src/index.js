@@ -15,7 +15,6 @@ const languageStrings = {
 };
 const data = {
     "city"        : "Gloucester",
-    "state"       : "MA",
     "postcode"    : "01930",
     "restaurants" : [
         { "name":"Zeke's Place",
@@ -76,15 +75,6 @@ const data = {
 
 const SKILL_NAME = "Gloucester Guide";
 
-// Weather courtesy of the Yahoo Weather API.
-// This free API recommends no more than 2000 calls per day
-
-const myAPI = {
-    host: 'query.yahooapis.com',
-    port: 443,
-    path: `/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${encodeURIComponent(data.city)}%2C%20${data.state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`,
-    method: 'GET'
-};
 // 2. Skill Code =======================================================================================================
 
 const Alexa = require('alexa-sdk');
@@ -159,7 +149,7 @@ const handlers = {
             + '  I have sent these details to the Alexa App on your phone.  Enjoy your meal! <say-as interpret-as="interjection">bon appetit</say-as>' ;
 
         var card = restaurantDetails.name + '\n' + restaurantDetails.address + '\n'
-            + data.city + ', ' + data.state + ' ' + data.postcode
+            + data.city + ', ' + data.postcode
             + '\nphone: ' + restaurantDetails.phone + '\n';
 
         this.response.cardRenderer(SKILL_NAME, card);
@@ -183,32 +173,6 @@ const handlers = {
 
         this.response.speak(say);
         this.emit(':responseReady');
-    },
-
-    'GoOutIntent': function () {
-
-        getWeather( ( localTime, currentTemp, currentCondition) => {
-            // time format 10:34 PM
-            // currentTemp 72
-            // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
-
-            // sample API URL for Irvine, CA
-            // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
-
-            var say = 'It is ' + localTime
-                + ' and the weather in ' + data.city
-                + ' is '
-                + currentTemp + ' and ' + currentCondition;
-            this.response.speak(say);
-            this.emit(':responseReady');
-
-            // TODO
-            // Decide, based on current time and weather conditions,
-            // whether to go out to a local beach or park;
-            // or recommend a movie theatre; or recommend staying home
-
-
-        });
     },
 
     'AMAZON.NoIntent': function () {
@@ -272,34 +236,6 @@ function getAttractionsByDistance(maxDistance) {
     return list;
 }
 
-function getWeather(callback) {
-    var https = require('https');
-
-
-    var req = https.request(myAPI, res => {
-        res.setEncoding('utf8');
-        var returnData = "";
-
-        res.on('data', chunk => {
-            returnData = returnData + chunk;
-        });
-        res.on('end', () => {
-            var channelObj = JSON.parse(returnData).query.results.channel;
-
-            var localTime = channelObj.lastBuildDate.toString();
-            localTime = localTime.substring(17, 25).trim();
-
-            var currentTemp = channelObj.item.condition.temp;
-
-            var currentCondition = channelObj.item.condition.text;
-
-            callback(localTime, currentTemp, currentCondition);
-
-        });
-
-    });
-    req.end();
-}
 function randomArrayElement(array) {
     var i = 0;
     i = Math.floor(Math.random() * array.length);
