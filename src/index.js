@@ -5,17 +5,17 @@
 const languageStrings = {
     'en': {
         'translation': {
-            'WELCOME' : "Welcome to Gloucester Guide!",
+            'WELCOME' : "Welcome to Kyoto Shijo Guide!",
             'HELP'    : "Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say recommend an attraction, or say, go outside. ",
-            'ABOUT'   : "Gloucester Massachusetts is a city on the Atlantic Ocean.  A popular summer beach destination, Gloucester has a rich history of fishing and ship building.",
+            'ABOUT'   : "Shijo area is a part of Kyoto city.There are many temple and cafe and restaurant and more.",
             'STOP'    : "Okay, see you next time!"
         }
     }
     // , 'de-DE': { 'translation' : { 'TITLE'   : "Local Helfer etc." } }
 };
 const data = {
-    "city"        : "Gloucester",
-    "postcode"    : "01930",
+    "city"        : "Kyoto Shijo",
+    "postcode"    : "600-0000",
     "restaurants" : [
         { "name":"Zeke's Place",
             "address":"66 East Main Street", "phone": "978-283-0474",
@@ -47,12 +47,11 @@ const data = {
             "meals": "coffee, breakfast, lunch",
             "description": "A highly rated local diner with generously sized plates."
         },
-
     ],
-    "attractions":[
+    "temples":[
         {
             "name": "Whale Watching",
-            "description": "Gloucester has tour boats that depart twice daily from Rogers street at the harbor.  Try either the 7 Seas Whale Watch, or Captain Bill and Sons Whale Watch. ",
+            "description": "Kyoto Shijo has tour boats that depart twice daily from Rogers street at the harbor.  Try either the 7 Seas Whale Watch, or Captain Bill and Sons Whale Watch. ",
             "distance": "0"
         },
         {
@@ -73,7 +72,7 @@ const data = {
     ]
 }
 
-const SKILL_NAME = "Gloucester Guide";
+const SKILL_NAME = "Kyoto Shijo Guide";
 
 // 2. Skill Code =======================================================================================================
 
@@ -164,7 +163,7 @@ const handlers = {
             distance = this.event.request.intent.slots.distance.value;
         }
 
-        var attraction = randomArrayElement(getAttractionsByDistance(distance));
+        var attraction = randomArrayElement(getTemplesByDistance(distance));
 
         var say = 'Try '
             + attraction.name + ', which is '
@@ -223,14 +222,14 @@ function getRestaurantByName(restaurantName) {
     return restaurant;
 }
 
-function getAttractionsByDistance(maxDistance) {
+function getTemplesByDistance(maxDistance) {
 
     var list = [];
 
-    for (var i = 0; i < data.attractions.length; i++) {
+    for (var i = 0; i < data.temples.length; i++) {
 
-        if(parseInt(data.attractions[i].distance) <= maxDistance) {
-            list.push(data.attractions[i]);
+        if(parseInt(data.temples[i].distance) <= maxDistance) {
+            list.push(data.temples[i]);
         }
     }
     return list;
