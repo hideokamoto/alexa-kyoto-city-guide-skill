@@ -1,15 +1,28 @@
-var MyLambdaFunction = require('../../src/index.js');
-const helpers = require('./helpers');
+const assert = require('power-assert')
+const MyLambdaFunction = require('../../src/index.js')
+const helpers = require('./helpers')
 const {
   event,
-  context,
-} = helpers;
-function callback(error, data) {
-  if(error) {
-    console.log('error: ' + error);
-  } else {
-    console.log(data);
-  }
-}
+  callback,
+} = helpers
 
-MyLambdaFunction['handler'] (event, context, callback);
+describe('Test Auth Actions', () => {
+  beforeEach(() => {
+    event.request.type = 'LaunchRequest'
+  })
+  it('a', () => {
+    MyLambdaFunction['handler'](
+      event,
+      {
+        succeed: (data) => {
+          assert.deepEqual({},{})
+          assert.ok(true)
+        },
+        fail: (err) => {
+          assert.ok(false)
+        }
+      },
+      callback
+    )
+  })
+})
