@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/_mocha test -- -R spec --recursive",
+    "test": "npm run test:unit && npm run test:integrations",
+    "test:integrations": "node_modules/mocha/bin/_mocha tests/integrations/ -- -R spec --recursive",
+    "test:unit": "node_modules/mocha/bin/_mocha tests/unit/ -- -R spec --recursive",
     "lint": "./node_modules/eslint/bin/eslint.js *.js",
     "lint:fix": "./node_modules/eslint/bin/eslint.js *.js --fix"
   },
