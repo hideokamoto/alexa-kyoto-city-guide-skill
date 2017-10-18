@@ -8,6 +8,18 @@
       "slots":[]
     },
     {
+      "intent": "CoffeeIntent",  "slots":[]
+    },
+    {
+      "intent": "BreakfastIntent",  "slots":[]
+    },
+    {
+      "intent": "LunchIntent",  "slots":[]
+    },
+    {
+      "intent": "DinnerIntent",  "slots":[]
+    },
+    {
       "intent": "GoOutIntent",  "slots":[]
     },
     {

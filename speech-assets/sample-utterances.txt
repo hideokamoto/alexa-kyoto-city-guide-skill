@@ -3,3 +3,15 @@ AboutIntent tell me about this place
 
 TempleIntent recommend a temple
 TempleIntent give me a temple
+
+
+CoffeeIntent coffee
+CoffeeIntent coffee shop
+
+BreakfastIntent breakfast
+LunchIntent lunch
+DinnerIntent dinner
+
+GoOutIntent go out
+GoOutIntent go outside
+GoOutIntent lets go out

@@ -63,35 +63,25 @@ const data = {
     "city"        : "Kyoto",
     "postcode"    : "600-0000",
     "restaurants" : [
-        { "name":"Zeke's Place",
-            "address":"66 East Main Street", "phone": "978-283-0474",
-            "meals": "breakfast, lunch",
-            "description": "A cozy and popular spot for breakfast.  Try the blueberry french toast!"
+        {
+            "name":"ippodo Kaboku tea room",
+            "address":"Teramachi-dori Nijo, Nakagyo-ku, Kyoto",
+            "phone": "+81-75-211-3421",
+            "meals": "lunch, cafe",
+            "description": "The Kaboku way is to allow customers to prepare their own tea. Teatime begins with the leisurely process of preparing the tea using a kyusu teapot."
         },
-        { "name":"Morning Glory Coffee Shop",
-            "address":"25 Western Avenue", "phone": "978-281-1851",
-            "meals": "coffee, breakfast, lunch",
-            "description": "A homestyle diner located just across the street from the harbor sea wall."
-        },
-        { "name":"Sugar Magnolias",
-            "address":"112 Main Street", "phone": "978-281-5310",
-            "meals": "breakfast, lunch",
-            "description": "A quaint eatery, popular for weekend brunch.  Try the carrot cake pancakes."
-        },
-        { "name":"Seaport Grille",
-            "address":"6 Rowe Square", "phone": "978-282-9799",
+        {
+            "name":"Tenkaippin main store",
+            "address":"Mezonsirakawa, 94, Ichijoji Tsukudacho, Sakyo-ku Kyoto-shi, Kyoto",
+            "phone": "+81-75-722-0955",
             "meals": "lunch, dinner",
-            "description": "Serving seafood, steak and casual fare.  Enjoy harbor views on the deck."
+            "description": "Tenkaippin is a Japanese restaurant chain specializing in ramen noodles. The first restaurant was opened in Kyoto in 1981"
         },
-        { "name":"Latitude 43",
-            "address":"25 Rogers Street", "phone": "978-281-0223",
+        { "name":"Torisei main store",
+            "address":"186 Kamiaburakake-cho, Fushimi-ku, Kyoto-shi, Kyoto",
+            "phone": "+81-75-622-5533",
             "meals": "lunch, dinner",
-            "description": "Features artsy decor and sushi specials.  Live music evenings at the adjoining Minglewood Tavern."
-        },
-        { "name":"George's Coffee Shop",
-            "address":"178 Washington Street", "phone": "978-281-1910",
-            "meals": "coffee, breakfast, lunch",
-            "description": "A highly rated local diner with generously sized plates."
+            "description": "STorisei main store is the Izakaya (Japanese Style Pub) remodeled one house of Shinsei’s sake breweries. What we pour into a cup from the tank at the center of the spacious first floor and serve is Kuradashi Nama-genshu, which is very popular sake. "
         },
     ],
     "temples":[
