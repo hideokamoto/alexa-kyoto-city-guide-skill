@@ -3,18 +3,64 @@
 //    Modify these strings and messages to change the behavior of your Lambda function
 
 const languageStrings = {
-    'en': {
-        'translation': {
-            'WELCOME' : "Welcome to Kyoto Shijo Guide!",
-            'HELP'    : "Say about, to hear more about the city, or say coffee, breakfast, lunch, or dinner, to hear local restaurant suggestions, or say recommend an attraction, or say, go outside. ",
-            'ABOUT'   : "Shijo area is a part of Kyoto city.There are many temple and cafe and restaurant and more.",
-            'STOP'    : "Okay, see you next time!"
-        }
+  'en': {
+    'translation': {
+      'WELCOME' : "Welcome to Kyoto Guide!",
+      'HELP'    : "Say about, to hear more about the city, or say recommend a temples, or say, go outside. ",
+      'ABOUT'   : "Kyoto is one of the most traditional city in Kyoto.There are many temple.",
+      'STOP'    : "Okay, see you next time!",
+      'TEST': {
+        'A': 'Hello',
+      },
+      "CITY": "Kyoto",
     }
+  },
+  'ja': {
+    'translation': {
+      'WELCOME' : "京都ガイドへようこそ！",
+      "HELP": 'サンプル',
+      "CITY": "京都",
+      "RESTAURANTS" : [
+        {
+          "NAME":"清水寺",
+          "ADDRESS":"",
+          "PHONE": "",
+          "MEALES": "breakfast, lunch",
+          "DESCRIPTION": "A cozy and popular spot for breakfast.  Try the blueberry french toast!"
+        }
+      ],
+      "TEMPLES" : [
+        {
+          "NAME":"清水寺",
+          "DISTANCE": "0",
+          "ADDRESS":"",
+          "DESCRIPTION": "清水寺は、京都府京都市東山区清水にある寺院。山号は音羽山。本尊は千手観音、創立者は延鎮である。"
+        },
+        {
+          "NAME":"金閣寺",
+          "DISTANCE": "0",
+          "ADDRESS":"",
+          "DESCRIPTION": "鹿苑寺は、京都市北区にある臨済宗相国寺派の寺。建物の内外に金箔を貼った3層の楼閣建築である舎利殿は金閣、舎利殿を含めた寺院全体は金閣寺として知られる。相国寺の山外塔頭寺院である"
+        },
+        {
+          "NAME":"銀閣寺",
+          "DISTANCE": "0",
+          "ADDRESS":"",
+          "DESCRIPTION": "東山慈照寺は、京都府京都市左京区にある、臨済宗相国寺派の寺院。相国寺の境外塔頭である。室町時代後期に栄えた東山文化を代表する建築と庭園を有する。"
+        },
+        {
+          "NAME":"知恩院",
+          "DISTANCE": "0",
+          "ADDRESS":"",
+          "DESCRIPTION": "知恩院は、京都府京都市東山区にある浄土宗総本山の寺院。徳川将軍家から庶民まで広く信仰を集め、今も京都の人々からは親しみを込めて「ちよいんさん」「ちおいんさん」と呼ばれている。"
+        },
+      ]
+    },
+  }
     // , 'de-DE': { 'translation' : { 'TITLE'   : "Local Helfer etc." } }
 };
 const data = {
-    "city"        : "Kyoto Shijo",
+    "city"        : "Kyoto",
     "postcode"    : "600-0000",
     "restaurants" : [
         { "name":"Zeke's Place",
@@ -50,35 +96,35 @@ const data = {
     ],
     "temples":[
         {
-            "name": "Whale Watching",
-            "description": "Kyoto Shijo has tour boats that depart twice daily from Rogers street at the harbor.  Try either the 7 Seas Whale Watch, or Captain Bill and Sons Whale Watch. ",
+            "name": "Kiyomizu-dera",
+            "description": "Kiyomizu-dera, officially Otowa-san Kiyomizu-dera, is an independent Buddhist temple in eastern Kyoto. The temple is part of the Historic Monuments of Ancient Kyoto  UNESCO World Heritage site. It was one of 20 finalists for the New7Wonders of the World. ",
             "distance": "0"
         },
         {
-            "name": "Good Harbor Beach",
-            "description": "Facing the Atlantic Ocean, Good Harbor Beach has huge expanses of soft white sand that attracts hundreds of visitors every day during the summer.",
+            "name": "Ginkaku-ji",
+            "description": "Ginkaku-ji , officially named Jishō-ji, is a Zen temple in the Sakyo ward of Kyoto, Japan. It is one of the constructions that represents the Higashiyama Culture of the Muromachi period.",
             "distance": "2"
         },
         {
-            "name": "Rockport",
-            "description": "A quaint New England town, Rockport is famous for rocky beaches, seaside parks, lobster fishing boats, and several art studios.",
+            "name": "Kinkaku-ji",
+            "description": "Kinkaku-ji , officially named Rokuon-ji, is a Zen Buddhist temple in Kyoto, Japan. It is one of the most popular buildings in Japan, attracting a large number of visitors annually.",
             "distance": "4"
         },
         {
-            "name": "Fenway Park",
-            "description": "Home of the Boston Red Sox, Fenway park hosts baseball games From April until October, and is open for tours. ",
+            "name": "Bukkō-ji",
+            "description": "Bukkō-ji , also known as the 'Temple of the Buddha's Light', was originally named Kosho-ji, a Jōdo Shinshū temple in the Yamashina ward of Kyoto, which later moved to the heart of Kyoto.",
             "distance": "38"
         }
     ]
 }
 
-const SKILL_NAME = "Kyoto Shijo Guide";
+const SKILL_NAME = "Kyoto Guide";
 
 // 2. Skill Code =======================================================================================================
 
 const Alexa = require('alexa-sdk');
 
-exports.handler = function(event, context, callback) {
+module.exports.handler = function(event, context, callback) {
 
     var alexa = Alexa.handler(event, context);
 
@@ -148,7 +194,7 @@ const handlers = {
             + '  I have sent these details to the Alexa App on your phone.  Enjoy your meal! <say-as interpret-as="interjection">bon appetit</say-as>' ;
 
         var card = restaurantDetails.name + '\n' + restaurantDetails.address + '\n'
-            + data.city + ', ' + data.postcode
+            + this.t('CITY') + ', ' + data.postcode
             + '\nphone: ' + restaurantDetails.phone + '\n';
 
         this.response.cardRenderer(SKILL_NAME, card);
@@ -157,17 +203,18 @@ const handlers = {
 
     },
 
-    'AttractionIntent': function () {
+    'TempleIntent': function () {
         var distance = 200;
+        /*
         if (this.event.request.intent.slots.distance.value) {
             distance = this.event.request.intent.slots.distance.value;
         }
+        */
 
         var attraction = randomArrayElement(getTemplesByDistance(distance));
 
         var say = 'Try '
-            + attraction.name + ', which is '
-            + (attraction.distance == "0" ? 'right downtown. ' : attraction.distance + ' miles away. Have fun! ')
+            + attraction.name + '.'
             + attraction.description;
 
         this.response.speak(say);

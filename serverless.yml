@@ -24,10 +24,11 @@ custom:
 package:
   include:
     - node_modules/
+    - src/
 
 functions:
   alexaCityGuide:
-    handler: index.hello
+    handler: src/index.handler
     events:
       - alexaSkill
 

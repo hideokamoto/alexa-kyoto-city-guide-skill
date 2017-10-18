@@ -8,6 +8,7 @@ const {
 
 describe('Test Auth Actions', () => {
   beforeEach(() => {
+    // event.request.locale = 'ja'
     event.request.type = 'LaunchRequest'
   })
   it('a', () => {

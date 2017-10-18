@@ -1,0 +1,5 @@
+AboutIntent about
+AboutIntent tell me about this place
+
+TempleIntent recommend a temple
+TempleIntent give me a temple
