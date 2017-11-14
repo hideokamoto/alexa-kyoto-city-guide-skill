@@ -1,0 +1,23 @@
+AboutIntent このスキルについて教えてください
+AboutIntent このスキルのことを話してください
+AboutIntent このスキルのことを話して
+
+TempleIntent お寺のことを話して
+TempleIntent お寺のことを教えて
+TempleIntent お寺について話して
+TempleIntent お寺について教えて
+TempleIntent お寺を１つ紹介して
+TempleIntent お寺を１つ説明して
+TempleIntent お寺をなにか紹介して
+TempleIntent お寺をなにか教えて
+
+CafeIntent カフェを教えて
+CafeIntent 喫茶店を教えて
+CafeIntent カフェを１つ教えて
+CafeIntent 喫茶店を１つ教えて
+CafeIntent カフェを知りませんか
+CafeIntent 喫茶店を知りませんか
+CafeIntent カフェを紹介して
+CafeIntent 喫茶店を紹介して
+CafeIntent カフェを紹介してください
+CafeIntent 喫茶店を紹介してください

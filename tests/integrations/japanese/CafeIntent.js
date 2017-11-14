@@ -8,9 +8,9 @@ const opts = {
   handler: app.handler
 }
 
-opts.name = 'Tell Temple Intent in Japanese'
+opts.name = 'Tell Cafe Intent in Japanese'
 conversation(opts)
-  .userSays('TempleIntent')
+  .userSays('CafeIntent')
   .plainResponse
-  .shouldContain('京都のお寺情報です。')
+  .shouldContain('京都のカフェ情報です。')
   .end()
