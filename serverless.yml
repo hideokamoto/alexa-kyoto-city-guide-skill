@@ -31,6 +31,10 @@ functions:
     handler: src/index.handler
     events:
       - alexaSkill
+  alexaCityGuideV2:
+    handler: src/indexV2.handler
+    events:
+      - alexaSkill
 
 resources:
   Resources:
