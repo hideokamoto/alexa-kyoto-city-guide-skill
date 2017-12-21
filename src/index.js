@@ -6,7 +6,7 @@ const languageStrings = {
   'en': {
     'translation': {
       'WELCOME': 'Welcome to Kyoto Guide!',
-      'HELP': 'Say about, to hear more about the city, or say recommend a temples, or say, go outside. ',
+      'HELP': 'Say about, to hear more about the city, or say recommend a temples, or say, go outside.',
       'ABOUT': 'Kyoto is one of the most traditional city in Kyoto.There are many temple.',
       'STOP': 'Okay, see you next time!',
       'TEST': {
