@@ -1,12 +1,9 @@
 const conversation = require('alexa-conversation')
 const app = require('../../../src/indexV2.js')
-
-const opts = {
-  appId: 'your-app-id',
-  app: app,
-  locale: 'ja-JP',
-  handler: app.handler
-}
+const {
+  getConfig
+} = require('../helpers')
+const opts = getConfig(app, 'ja-JP')
 
 opts.name = 'Tell AMAZON.HelpIntent in Japanese'
 conversation(opts)
