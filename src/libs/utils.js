@@ -7,7 +7,7 @@ exports.getTranslationFile = (name, locale = 'en-US') => {
   }
 }
 
-exports.getLocaleFromEvent = (event) => {
+exports.getLocaleFromEvent = event => {
   let lang = 'en-US'
   const { request } = event
   if (!request) return lang

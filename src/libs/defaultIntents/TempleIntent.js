@@ -1,7 +1,4 @@
-const {
-  getTranslationFile,
-  getLocaleFromEvent
-} = require('../utils')
+const { getTranslationFile, getLocaleFromEvent } = require('../utils')
 
 function getTempleList (locale) {
   return getTranslationFile('temples', locale)
@@ -9,7 +6,7 @@ function getTempleList (locale) {
 function randomArrayElement (array) {
   var i = 0
   i = Math.floor(Math.random() * array.length)
-  return (array[i])
+  return array[i]
 }
 
 module.exports = function () {
