@@ -6,5 +6,6 @@ module.exports = {
   'AMAZON.HelpIntent': require('./Utilities/Help'),
   'AMAZON.NoIntent': require('./Utilities/Stop'),
   'AMAZON.CancelIntent': require('./Utilities/Stop'),
-  'AMAZON.StopIntent': require('./Utilities/Stop')
+  'AMAZON.StopIntent': require('./Utilities/Stop'),
+  Unhandled: require('./Utilities/Help')
 }
