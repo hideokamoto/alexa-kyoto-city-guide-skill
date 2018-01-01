@@ -8,7 +8,9 @@
     "test:integrations": "node_modules/mocha/bin/_mocha tests/integrations/* -- -R spec --recursive",
     "test:unit": "node_modules/mocha/bin/_mocha tests/unit/* -- -R spec --recursive",
     "lint": "./node_modules/eslint/bin/eslint.js *.js",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js *.js --fix"
+    "lint:fix": "./node_modules/eslint/bin/eslint.js *.js --fix",
+    "precommit": "lint-staged",
+    "format": "prettier-eslint --write \"src/**/*.js\""
   },
   "keywords": [],
   "author": "",
@@ -21,10 +23,22 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
     "mocha": "^3.5.0",
-    "power-assert": "^1.4.4"
+    "power-assert": "^1.4.4",
+    "prettier": "^1.9.2",
+    "prettier-eslint": "^8.7.0",
+    "prettier-eslint-cli": "^4.7.0"
   },
   "dependencies": {
     "alexa-sdk": "^1.0.12"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint",
+      "git add"
+    ]
   }
 }
